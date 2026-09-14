@@ -1,0 +1,228 @@
+/* Original styles */
+.choice-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Multiple choice hint */
+.multiple-choice-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #e7f3ff;
+  border: 1px solid #b6d4fe;
+  border-radius: 6px;
+  color: #0a58ca;
+  font-size: 0.9em;
+  font-weight: 500;
+  margin: 5px 0;
+}
+
+.multiple-choice-hint i {
+  font-size: 0.85em;
+}
+
+/* Choice Option */
+.choice-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.choice-option:hover {
+  background-color: #f0f7ff;
+  border-color: #80bfff;
+  transform: translateY(-1px);
+}
+
+.choice-option input[type="radio"],
+.choice-option input[type="checkbox"] {
+  margin-right: 12px;
+  transform: scale(1.1);
+  accent-color: #007bff;
+}
+
+.choice-label {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.choice-text {
+  flex: 1;
+  font-size: 1em;
+  color: #333;
+}
+
+.choice-text p {
+  margin: 0;
+}
+
+.choice-text code {
+  color: #c7254e;
+  background-color: #f9f2f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Inline choice styles */
+.choice-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+  justify-content: flex-start;
+}
+
+.choice-option-inline {
+  flex: 1 1 calc(25% - 10px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 14px;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  text-align: left;
+}
+
+.choice-option-inline:hover {
+  background-color: #f0f7ff;
+  border-color: #80bfff;
+  transform: translateY(-1px);
+}
+
+.choice-option-inline input[type="radio"],
+.choice-option-inline input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.1);
+  accent-color: #007bff;
+}
+
+.explanation {
+  display: none;
+  background-color: #e9f5ff;
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 1em;
+  line-height: 1.6;
+  border: 1px solid #b3d7ff;
+  color: #333;
+}
+
+.explanation strong {
+  color: #0056b3;
+  font-weight: 600;
+}
+
+.explanation .correct-answer-text {
+  font-weight: bold;
+  color: #28a745;
+}
+
+.feedback-area {
+  display: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.feedback-area.correct {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.feedback-area.incorrect {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.feedback-area.no-selection {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.feedback-area.partial {
+  background-color: #cce5ff;
+  color: #004085;
+  border: 1px solid #b8daff;
+}
+
+/* Dark mode adjustments */
+.dark-mode .choice-container {
+  border-color: #444;
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.dark-mode .choice-option,
+.dark-mode .choice-option-inline {
+  background-color: #2a2a2a;
+  border-color: #555;
+  color: #e0e0e0;
+}
+
+.dark-mode .choice-option:hover,
+.dark-mode .choice-option-inline:hover {
+  background-color: #333;
+  border-color: #666;
+}
+
+.dark-mode .choice-text {
+  color: #e0e0e0;
+}
+
+.dark-mode .explanation {
+  background-color: #2a2a2a;
+  border-color: #555;
+  color: #e0e0e0;
+}
+
+.dark-mode .multiple-choice-hint {
+  background-color: #1a3c5c;
+  border-color: #2c5282;
+  color: #90cdf4;
+}
+
+/* Eyecare mode adjustments */
+.eyecare-mode .choice-container {
+  border-color: #d0d0d0;
+  background-color: #f8f6f0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.eyecare-mode .multiple-choice-hint {
+  background-color: #e8f0fe;
+  border-color: #c6d9fd;
+  color: #2c5282;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .choice-option-inline {
+    flex: 1 1 100%;
+  }
+}

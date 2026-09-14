@@ -1,0 +1,40 @@
+.anchored-text {
+  scroll-margin-top: 80px;
+  cursor: pointer;
+  color: #1e88e5;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(30, 136, 229, 0.5);
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.anchored-text:hover {
+  color: #0d47a1;
+}
+
+.anchored-text .anchor-icon {
+  position: relative;
+  right: 0;
+  top: 0.1em;
+  opacity: 1;
+  vertical-align: middle;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.anchored-text:hover .anchor-icon {
+  opacity: 1;
+}
+
+.anchored-block {
+  display: block;
+  font-size: 1.1em;
+  margin: 1em 0;
+}
+
+.anchor-label {
+  unicode-bidi: isolate;
+}

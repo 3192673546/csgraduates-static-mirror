@@ -1,0 +1,84 @@
+.region {
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-radius: 0.25rem;
+    padding: 0.8rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333;
+    box-shadow: 0 1px 2px 0 #0000001a;
+}
+
+.region-heading {
+    font-weight: 600;
+    font-size: .9rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.region-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: .6em;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.region-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.region-content > :last-child {
+    margin-bottom: 0;
+}
+
+.region-info {
+    border-left-color: #d4d5d8;
+    background-color: #fdfdfe;
+    color: #474748;
+}
+.region-info .region-heading {
+    color: #555;
+}
+
+.region-tip {
+    border-left-color: #2e8555;
+    background-color: #f4fdf4;
+    color: #155724;
+}
+.region-tip .region-heading {
+    color: #155724;
+}
+
+.region-note {
+    border-left-color: #4cb3d4;
+    background-color: #eef9fd;
+    color: #0c5460;
+}
+.region-note .region-heading {
+    color: #0c5460;
+}
+
+.region-warn {
+    border-left-color: #ffc107;
+    background-color: #fff8e6;
+    color: #856404;
+}
+.region-warn .region-heading {
+    color: #856404;
+}
+
+.region-danger {
+    border-left-color: #dc3545;
+    background-color: #ffebec;
+    color: #721c24;
+}
+.region-danger .region-heading {
+    color: #721c24;
+}

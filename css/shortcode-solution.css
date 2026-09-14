@@ -1,0 +1,45 @@
+.answer-container {
+  margin: 15px 0;
+  padding: 5px;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.solution-detail {
+  display: none;
+  background-color: #e9f5ff;
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 1em;
+  line-height: 1.6;
+  border: 1px solid #b3d7ff;
+  color: #333;
+  margin-top: 10px;
+}
+
+.solution-detail strong {
+  color: #0056b3;
+  font-weight: 600;
+}
+
+/* Dark mode adjustments */
+.dark-mode .answer-container {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.dark-mode .solution-detail {
+  background-color: #2a2a2a;
+  border-color: #555;
+  color: #e0e0e0;
+}
+
+/* Eyecare mode adjustments */
+.eyecare-mode .answer-container {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}

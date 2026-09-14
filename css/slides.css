@@ -1,0 +1,121 @@
+/* ===========================================================
+   Embedded Reveal.js deck inside the docs content column.
+   Loaded by layouts/slides/single.html.
+   =========================================================== */
+
+.td-slides-page .td-slides-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Keep the lecture link visually tied to the page description, while
+   leaving enough breathing room before the slide controls. */
+.td-slides-page .video-links {
+  margin-top: -0.35rem;
+  margin-bottom: 1.25rem;
+}
+.td-slides-page .video-links ul {
+  margin-bottom: 0;
+}
+
+.td-slides-page .td-slides-btn {
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+.td-slides-page .td-slides-btn:hover {
+  background: #f3f3f3;
+  border-color: #999;
+}
+.td-slides-page .td-slides-btn i { margin-right: 0.25rem; }
+
+.td-slides-page .td-slides-hint kbd {
+  background: #f3f3f3;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-family: inherit;
+  font-size: 0.85em;
+  color: #333;
+}
+
+/* The stage clips Reveal so it never overflows the content column.
+   Default to 70vh (tall enough to read code blocks comfortably);
+   page front matter `slides_height` overrides this via inline <style>. */
+.td-slides-page .td-reveal-stage {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 360px;
+  margin: 0.5rem 0 1.5rem;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  /* embedded reveal uses inline-block layout — give it a fresh
+     stacking context so its absolutely-positioned controls don't
+     leak above the navbar. */
+  isolation: isolate;
+  contain: layout paint;
+}
+.td-slides-page .td-reveal-stage:fullscreen,
+.td-slides-page .td-reveal-stage:-webkit-full-screen {
+  height: 100vh;
+  border: none;
+  border-radius: 0;
+  background: #fff;
+}
+
+.td-slides-page .reveal { height: 100%; }
+
+/* Slightly smaller default font so embedded mode looks balanced
+   next to the docs body text. Reveal scales internally so this is
+   just the baseline. */
+.td-slides-page .reveal .slides { font-size: 32px; }
+.td-slides-page .reveal pre { font-size: 0.55em; line-height: 1.3; }
+.td-slides-page .reveal pre code {
+  max-height: none;
+  padding: 0.6em 0.9em;
+  border-radius: 4px;
+}
+.td-slides-page .reveal blockquote {
+  background: rgba(0, 0, 0, 0.04);
+  border-left: 4px solid #ccc;
+  padding: 0.5em 0.8em;
+  font-style: normal;
+}
+.td-slides-page .reveal img {
+  max-height: 60vh;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Hide things that don't make sense for a slide deck page. */
+.td-slides-page .feedback,
+.td-slides-page .td-page-meta--child-pages,
+.td-slides-page .pageinfo { display: none; }
+
+/* Print: drop reveal chrome and let the browser paginate naturally.
+   Reveal also ships its own print stylesheet; this only handles the
+   surrounding page. */
+@media print {
+  .td-slides-page .td-slides-toolbar { display: none; }
+  .td-slides-page .td-reveal-stage {
+    height: auto;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+}

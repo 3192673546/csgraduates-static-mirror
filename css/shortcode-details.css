@@ -1,0 +1,69 @@
+.elegant-detail {
+    margin: 20px 0;
+    border: 1px solid #e0e0e0; /* Softer border */
+    border-radius: 8px; /* Slightly more rounded */
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Softer, more diffused shadow */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.elegant-detail:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+
+.elegant-summary {
+    font-weight: 600; /* Slightly bolder */
+    cursor: pointer;
+    padding: 15px 20px;
+    background-color: #f7f7f7; /* Lighter, neutral background */
+    color: #333;
+    border-radius: 8px 8px 0 0; /* Match detail's top radius */
+    display: flex; /* For aligning icon and text */
+    justify-content: space-between; /* Pushes icon to the right */
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+    position: relative; /* For pseudo-elements if needed directly on summary */
+}
+
+.elegant-summary:hover {
+    background-color: #efefef; /* Subtle hover for summary */
+}
+
+/* Custom animated chevron icon */
+.elegant-summary::after {
+    content: '❯'; /* Chevron right */
+    display: inline-block;
+    font-size: 0.9em;
+    color: #007acc; /* Accent color for icon */
+    margin-left: 10px;
+    transition: transform 0.25s ease-in-out;
+    transform-origin: center;
+}
+
+details[open] > .elegant-summary::after {
+    transform: rotate(90deg); /* Chevron down when open */
+}
+
+/* Hide default browser marker */
+.elegant-summary::-webkit-details-marker,
+.elegant-summary::marker {
+    display: none;
+}
+
+.elegant-detail-content {
+    background-color: #ffffff;
+    padding: 0 20px; /* Initial padding for animation */
+    border-radius: 0 0 8px 8px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out,
+                padding 0.35s ease-in-out;
+}
+
+details[open] > .elegant-detail-content {
+    padding: 15px 20px;
+    max-height: none;
+    overflow: visible;
+    opacity: 1;
+}

@@ -1,0 +1,370 @@
+/* =====================================================
+   Floating Action Button Tool Set
+   ===================================================== */
+
+/* Container - position is set by JS */
+.fab-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  touch-action: none;
+  user-select: none;
+  will-change: left, top;
+}
+
+/* Main button */
+.fab-main {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #2b2934;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+  cursor: move;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+  transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fab-main:hover {
+  background: #34313f;
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.26);
+  transform: translateY(-1px);
+}
+
+.fab-main:active {
+  transform: translateY(0) scale(0.96);
+}
+
+/* Icon swap */
+.fab-main svg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.fab-main-grid rect {
+  fill: currentColor;
+}
+
+.fab-main-close {
+  opacity: 0;
+  transform: rotate(-45deg) scale(0.85);
+}
+
+.fab-main-close path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.fab-container.active .fab-main {
+  background: #fff;
+  border-color: rgba(43, 41, 52, 0.16);
+  color: #2b2934;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.fab-container.active .fab-main-grid {
+  opacity: 0;
+  transform: rotate(45deg) scale(0.85);
+}
+
+.fab-container.active .fab-main-close {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* Minimized state — pill flush to viewport edge */
+.fab-container.minimized {
+  /* override the JS-set left/top so the pill is exactly at the edge */
+  padding: 0;
+}
+
+.fab-container.minimized .fab-main {
+  width: 8px;
+  height: 36px;
+  border-radius: 0 6px 6px 0;
+  background: #2b2934;
+  border-color: rgba(255, 255, 255, 0.1);
+  border-left: none;
+  opacity: 0.45;
+  cursor: pointer;
+  transition: width 0.22s ease, opacity 0.22s ease;
+}
+
+/* FAB on left edge: pill rounds right side */
+.fab-container.minimized.fab-align-left .fab-main {
+  border-radius: 0 6px 6px 0;
+  border-left: none;
+  border-right-width: 1px;
+}
+
+/* FAB on right edge: pill rounds left side */
+.fab-container.minimized:not(.fab-align-left) .fab-main {
+  border-radius: 6px 0 0 6px;
+  border-right: none;
+  border-left-width: 1px;
+}
+
+.fab-container.minimized .fab-main:hover {
+  width: 16px;
+  opacity: 0.75;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+.fab-container.minimized .fab-main-grid,
+.fab-container.minimized .fab-main-close {
+  opacity: 0;
+}
+
+.fab-container.minimized .fab-options {
+  display: none;
+}
+
+/* Prevent the minimized pill from triggering long-press visual */
+.fab-container.minimized.dragging .fab-main {
+  opacity: 0.6;
+  transform: none;
+}
+
+.fab-container.dragging .fab-main {
+  cursor: grabbing;
+  transform: scale(1.06);
+  opacity: 0.9;
+  transition: none;
+}
+
+/* Options panel */
+.fab-options {
+  position: absolute;
+  width: 148px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 6px 0;
+  /* hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.88);
+  transform-origin: bottom right;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.fab-container.active .fab-options {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* Placement: default = open UP, align RIGHT */
+.fab-options {
+  bottom: 44px;
+  right: 0;
+  top: auto;
+  left: auto;
+}
+
+/* open DOWN */
+.fab-container.fab-open-down .fab-options {
+  top: 44px;
+  bottom: auto;
+  transform-origin: top right;
+}
+
+.fab-container.fab-open-down.active .fab-options {
+  transform: scale(1);
+}
+
+/* align LEFT */
+.fab-container.fab-align-left .fab-options {
+  left: 0;
+  right: auto;
+}
+
+.fab-container.fab-align-left .fab-options,
+.fab-container.fab-align-left.fab-open-down .fab-options {
+  transform-origin: bottom left;
+}
+
+.fab-container.fab-align-left.fab-open-down .fab-options {
+  transform-origin: top left;
+}
+
+/* Individual option rows */
+.fab-option {
+  width: 100%;
+  padding: 7px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.fab-option i {
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+  color: #667eea;
+  transition: color 0.15s ease;
+}
+
+.fab-option-label {
+  flex: 1;
+  line-height: 1;
+}
+
+.fab-option:hover {
+  background: #f0f1ff;
+  color: #4a56c8;
+}
+
+.fab-option:hover i {
+  color: #4a56c8;
+}
+
+.fab-option:active {
+  background: #e0e3ff;
+}
+
+/* Stagger-in animation */
+.fab-container.active .fab-option {
+  animation: fab-row-in 0.18s ease both;
+}
+
+.fab-container.active .fab-option:nth-child(1) { animation-delay: 0.02s; }
+.fab-container.active .fab-option:nth-child(2) { animation-delay: 0.05s; }
+.fab-container.active .fab-option:nth-child(3) { animation-delay: 0.08s; }
+.fab-container.active .fab-option:nth-child(4) { animation-delay: 0.11s; }
+.fab-container.active .fab-option:nth-child(5) { animation-delay: 0.14s; }
+.fab-container.active .fab-option:nth-child(6) { animation-delay: 0.17s; }
+.fab-container.active .fab-option:nth-child(7) { animation-delay: 0.20s; }
+
+@keyframes fab-row-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Dark mode */
+body.dark-mode .fab-options {
+  background: #1e1e2e;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .fab-option {
+  color: #cdd6f4;
+}
+
+body.dark-mode .fab-option i {
+  color: #89b4fa;
+}
+
+body.dark-mode .fab-option:hover {
+  background: #2a2a3e;
+  color: #89b4fa;
+}
+
+body.dark-mode .fab-option:hover i {
+  color: #89b4fa;
+}
+
+/* Ripple on main button */
+.fab-main::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(0);
+  opacity: 0;
+}
+
+.fab-main:active::after {
+  animation: fab-ripple 0.5s ease-out;
+}
+
+@keyframes fab-ripple {
+  0%   { transform: scale(0); opacity: 1; }
+  100% { transform: scale(3.5); opacity: 0; }
+}
+
+/* Tool action helpers */
+body.fab-navbar-pinned .td-navbar,
+body.fab-navbar-pinned .td-navbar.js-navbar-scroll {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1030;
+}
+
+@media (min-width: 768px) {
+  body.fab-navbar-pinned .td-main {
+    padding-top: 4rem;
+  }
+}
+
+.fab-notification {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 10000;
+  max-width: min(280px, calc(100vw - 40px));
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: rgba(40, 167, 69, 0.95);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.35;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  pointer-events: none;
+}
+
+.fab-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .fab-main:hover {
+    transform: none;
+    background: #2b2934;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+  }
+
+  .fab-option:hover {
+    background: transparent;
+    color: #333;
+  }
+
+  .fab-option:hover i {
+    color: #667eea;
+  }
+}

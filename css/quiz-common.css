@@ -1,0 +1,239 @@
+/* Tag container styles */
+.quiz-tag-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.quiz-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.quiz-tag:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.quiz-tag:hover::before {
+  left: 100%;
+}
+
+.quiz-tag:active {
+  transform: translateY(0) scale(1.02);
+}
+
+.tag-icon {
+  font-weight: bold;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.quiz-tag-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.quiz-tag-kp-link {
+  width: 26px;
+  min-width: 26px;
+  height: 26px;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  box-shadow: 0 2px 4px rgba(22, 163, 74, 0.2);
+}
+
+.quiz-tag-kp-link:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+/* Quiz actions container */
+.quiz-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.toggle-btn, .collect-btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 6px 12px;
+  box-shadow: none;
+  color: #6c757d;
+  font-size: 14px;
+  font-weight: normal;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.toggle-btn:hover,
+.toggle-btn:focus,
+.collect-btn:hover,
+.collect-btn:focus {
+  color: #343a40;
+  text-decoration: underline;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  transform: translateY(-1px);
+}
+
+.collect-btn.collected {
+  color: #ffc107;
+}
+
+.collect-btn.collected i {
+  font-weight: 900;
+}
+
+/* Dark mode */
+.dark-mode .quiz-tag-container {
+  border-bottom-color: #333;
+}
+
+.dark-mode .tag-icon {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .quiz-tag {
+  background: linear-gradient(135deg, #7c8ce8 0%, #8a7ca8 100%);
+  box-shadow: 0 2px 6px rgba(124, 140, 232, 0.3);
+  color: white;
+}
+
+.dark-mode .quiz-tag:hover {
+  background: linear-gradient(135deg, #8a7ca8 0%, #7c8ce8 100%);
+  box-shadow: 0 4px 14px rgba(124, 140, 232, 0.4);
+  transform: translateY(-1px) scale(1.05);
+}
+
+.dark-mode .quiz-tag-kp-link {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.3);
+}
+
+.dark-mode .quiz-tag-kp-link:hover {
+  background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.4);
+}
+
+/* Eyecare Mode */
+.eyecare-mode .quiz-tag-container {
+  border-bottom-color: #e8e6e0;
+}
+
+.eyecare-mode .tag-icon {
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.eyecare-mode .quiz-tag {
+  background: linear-gradient(135deg, #b8a082 0%, #9d8b73 100%);
+  box-shadow: 0 2px 4px rgba(90, 111, 216, 0.25);
+  color: white;
+}
+
+.eyecare-mode .quiz-tag:hover {
+  background: linear-gradient(135deg, #9d8b73 0%, #b8a082 100%);
+  box-shadow: 0 4px 12px rgba(90, 111, 216, 0.35);
+}
+
+.eyecare-mode .quiz-tag-kp-link {
+  background: linear-gradient(135deg, #65a86f 0%, #4e8c58 100%);
+  box-shadow: 0 2px 4px rgba(90, 111, 82, 0.25);
+}
+
+.eyecare-mode .quiz-tag-kp-link:hover {
+  background: linear-gradient(135deg, #4e8c58 0%, #65a86f 100%);
+  box-shadow: 0 4px 12px rgba(90, 111, 82, 0.35);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .quiz-tag-container {
+    justify-content: center;
+  }
+  
+  .quiz-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+
+  .quiz-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .toggle-btn, .collect-btn {
+    width: 100%;
+  }
+}
+
+/* Hide visible knowledge tags on 408 and math exam pages; keep data-tags intact */
+[data-page-url*="/study_methods/408quiz/"] > .quiz-tag-container,
+[data-page-url*="/study_methods/math/"] > .quiz-tag-container,
+[data-page-url*="/study_methods/math_old/"] > .quiz-tag-container {
+  display: none !important;
+}
+
+/* Hide 408/math tag navigation entries on exam pages. */
+#m-study_methodstags408quiz-li,
+#m-study_methodstagsmath-li,
+#m-study_methodstagsmath_old-li,
+#m-study_methodstags_pro408quiz-li,
+#m-study_methodstags_promath-li,
+#m-study_methodstags_promath_old-li {
+  display: none !important;
+}
+
+/* Show the requested tag only on 408 2009 question 6. */
+#quiz-choice-75c33eaeb564a07a6da318c1b4cc48c0-6 > .quiz-tag-container {
+  display: block !important;
+}
+
+/* Show the requested tag on 408 2009 question 7. */
+#quiz-choice-75c33eaeb564a07a6da318c1b4cc48c0-7 > .quiz-tag-container {
+  display: block !important;
+}
